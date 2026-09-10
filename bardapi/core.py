@@ -40,7 +40,7 @@ class Bard:
         resp = self.session.get(url="https://bard.google.com/", timeout=self.timeout, proxies=self.proxies)
         if resp.status_code != 200:
             raise Exception(f"Response Status: {resp.status_code}")
-        return re.search(r"SNlM0e\":\"(.*?)\"", resp.text).group(1)
+        return re.search(r"SNlM0e\":\"(.*?)\"", resp.text)[1]
 
     def get_answer(self, input_text: str) -> dict:
         params = {
